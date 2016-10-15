@@ -1,6 +1,6 @@
 # Is Google Drive Storage Really "Unlimited?"
 
-Binghamton University claims that the Google Drive storage on my school sponsored account is"unlimited." We'll see.
+Binghamton University claims that the Google Drive storage on my school sponsored account is "unlimited." We'll see.
 
 ## Resources
 
