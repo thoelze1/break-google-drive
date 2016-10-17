@@ -16,10 +16,10 @@ except ImportError:
 
 # If modifying these scopes, delete your previously saved credentials
 # at ~/.credentials/drive-python-quickstart.json
-SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+SCOPES = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Drive API Python Quickstart'
-FILE_NAME = 'gray32.txt'
+FILE_NAME = 'test_copy.txt'
 
 def get_credentials():
     """Gets valid user credentials from storage.
@@ -57,20 +57,23 @@ def retrieve_file(service):
   Returns:
     List of File resources.
   """
-  result = []
+  file_id = 0
   page_token = None
   query = "name='%s'" % FILE_NAME
   while True:
-    response = service.files().list(q=query,
+    response = service.files().list(q="name='test'",
                                     spaces='drive',
                                     fields='nextPageToken, files(id, name)',
                                     pageToken=page_token).execute()
     for file in response.get('files', []):
         # Process change
         print('Found file: %s (%s)' % (file.get('name'), file.get('id')))
+        file_id = file.get('id')
     page_token = response.get('nextPageToken', None)
     if page_token is None:
         break;
+  print(file_id)
+  return file_id 
     
 def copy_file(service, origin_file_id, copy_title):
   """Copy an existing file.
@@ -101,7 +104,7 @@ def main():
   http = credentials.authorize(httplib2.Http())
   service = discovery.build('drive', 'v3', http=http)
 
-  retrieve_file(service)
+  copy_file(service, retrieve_file(service), 'testing')
   
   """comment
   results = service.files().list(
