@@ -12,6 +12,8 @@ I used the Google Drive API with Python to find and copy a file. Once copying wo
 
 To increase the expansion rate further, I will optimize the script and use it with even larger files; I am currently uploading a 420 GB text file (which will triple the current expansion rate). If I copy a 10 TB file (the maximum size allowed on my university account), it would increase expansion rate by a factor of 65. Ideally I will find a way to merge the contents of two files in Google Drive so that I can generate a 10 TB file without having to upload it.
 
+According to a [What if? question](https://what-if.xkcd.com/63/) posed a few years ago, Google has a storage capacity of approximately 15 exabytes. Based on this estimate, the 35 PB I generated today (October 17) account for 0.2% of Google's total storage space.
+
 ## Resources
 
 - [Quickly create a large file on a Linux system?](http://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
