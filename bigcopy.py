@@ -19,7 +19,8 @@ except ImportError:
 SCOPES = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Drive API Python Quickstart'
-FILE_NAME = 'test_copy.txt'
+FILE_NAME = 'test2.txt'
+NUM_COPIES = 4
 
 def get_credentials():
     """Gets valid user credentials from storage.
@@ -61,7 +62,7 @@ def retrieve_file(service):
   page_token = None
   query = "name='%s'" % FILE_NAME
   while True:
-    response = service.files().list(q="name='test'",
+    response = service.files().list(q=query,
                                     spaces='drive',
                                     fields='nextPageToken, files(id, name)',
                                     pageToken=page_token).execute()
@@ -69,6 +70,7 @@ def retrieve_file(service):
         # Process change
         print('Found file: %s (%s)' % (file.get('name'), file.get('id')))
         file_id = file.get('id')
+        break
     page_token = response.get('nextPageToken', None)
     if page_token is None:
         break;
@@ -95,28 +97,19 @@ def copy_file(service, origin_file_id, copy_title):
   return None
 
 def main():
-  """Comment
-  Creates a Google Drive API service object and outputs the names and IDs
-  for up to 10 files.
+  """Copy a file in Google Drive.
+  Creates a Google Drive API service object,
+  finds a file and copies it.
   """
 
   credentials = get_credentials()
   http = credentials.authorize(httplib2.Http())
   service = discovery.build('drive', 'v3', http=http)
 
-  copy_file(service, retrieve_file(service), 'testing')
-  
-  """comment
-  results = service.files().list(
-      pageSize=10,fields="nextPageToken, files(id, name)").execute()
-  items = results.get('files', [])
-  if not items:
-      print('No files found.')
-  else:
-      print('Files:')
-      for item in items:
-          print('{0} ({1})'.format(item['name'], item['id']))
-  """
+  file_id = retrieve_file(service)
+  for i in range(0, NUM_COPIES):
+      copy_file(service, file_id, 'testing')
+      print('Copy %d' % i)
 
 if __name__ == '__main__':
     main()
