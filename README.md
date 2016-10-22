@@ -2,7 +2,9 @@
 
 Binghamton University claims that the Google Drive storage on my school sponsored account is "unlimited." We'll see.
 
-## How?
+## Current Strategy
+
+## Updates
 
 At first, I tried uploading huge files to Google Drive using [gdrive](https://github.com/prasmussen/gdrive). The average upload speed from my desktop is about 3.0 MB per second; it would take over 3 days to upload a single TB. I began looking for another solution.
 
@@ -14,6 +16,12 @@ To increase the expansion rate further, I will optimize the script and use it wi
 
 According to a [What if? question](https://what-if.xkcd.com/63/) posed a few years ago, Google has a storage capacity of approximately 15 exabytes. Based on this estimate, the 35 PB I generated today (October 17) account for 0.2% of Google's total storage space.
 
+Currently, I am supposedly using 52.1 petabytes (52,100 terabytes) of storage space and I still haven't heard from Google.
+
+![](images/52PB.png)
+
+October 22: Something isn't adding up. Each copy of a file takes less than a second to process, so it's likely that each is a shallow copy. I will have to adjust my scheme. First I will have to develop a way to generate files that are very difficult to compress, and then I will have to find a fast way to generate modified copies in Google Drive so that they remain difficult to compress and are not redundant with the originals.
+
 ## Resources
 
 - [Quickly create a large file on a Linux system?](http://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
@@ -22,3 +30,4 @@ According to a [What if? question](https://what-if.xkcd.com/63/) posed a few yea
 - [Google Drive APIs: Python Quickstart](https://developers.google.com/drive/v3/web/quickstart/python)
 - [Google Drive APIs: File Copy](https://developers.google.com/drive/v2/reference/files/copy#auth)
 - [How can you merge two Google Documents?](http://webapps.stackexchange.com/questions/9641/how-can-you-merge-two-google-documents)
+- [Compression of random data is impossible?](http://cs.stackexchange.com/questions/40239/compression-of-random-data-is-impossible)
