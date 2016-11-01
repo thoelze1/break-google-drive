@@ -22,6 +22,7 @@ Currently, I am supposedly using 52.1 petabytes (52,100 terabytes) of storage sp
 
 October 22: Something isn't adding up. Each copy of a file takes less than a second to process, so it's likely that each is a shallow copy. I will have to adjust my scheme. First I will have to develop a way to generate files that are very difficult to compress, and then I will have to find a fast way to generate modified copies in Google Drive so that they remain difficult to compress and are not redundant with the originals.
 
+October 28: According to Gmail, I am using 54,646,653.06 GB. According to the Drive app for iOS, my drive has a capacity of 54,656,892 GB storage space. It seems that "storage capacity" is updated based on current usage; I will check with friends to see what their capacity is.
 ## Resources
 
 - [Quickly create a large file on a Linux system?](http://stackoverflow.com/questions/257844/quickly-create-a-large-file-on-a-linux-system)
