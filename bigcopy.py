@@ -19,8 +19,8 @@ except ImportError:
 SCOPES = 'https://www.googleapis.com/auth/drive.file https://www.googleapis.com/auth/drive.metadata.readonly https://www.googleapis.com/auth/drive'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Drive API Python Quickstart'
-FILE_NAME = 'test2.txt'
-NUM_COPIES = 4
+FILE_NAME = 'fallocate.txt'
+NUM_COPIES = 100000  
 
 def get_credentials():
     """Gets valid user credentials from storage.
